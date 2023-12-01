@@ -16,39 +16,68 @@
             <div class="col-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <p class="h3">{{ $product->name }}</p>
+                    <span>{{ $product->name }}</span>
                 </div>
-                <div class="form-group">
-                    <strong>Description:</strong>
-                    <p class="h3">{{ $product->description }}</p>
-                </div>
-                <div class="form-group">
-                    <strong>About:</strong>
-                    <p class="h3">{{ $product->about }}</p>
-                </div>
-                <div class="form-group">
-                    <strong>Characteristics:</strong>
-                    <p class="h3">{{ $product->characteristics }}</p>
-                </div>
-                <div class="form-group">
-                    <strong>Category:</strong>
-                    <p class="h3">{{ $product->category->name }}</p>
-                </div>
-                <div class="form-group">
-                    <strong>PDF:</strong>
-                    <p class="h3">
-                        <a href="{{ asset($product->pdf) }}" class="text-dark" target="_blank">View File</a>
-                    </p>
-                </div>
-            </div>
-            <div class="col-12">
                 <div class="form-group">
                     <strong>Image:</strong>
                     <div class="col-12 col-md-6">
                         @foreach(json_decode($product->images) as $imagePath)
-                            <img src="{{asset($imagePath)}}" width="300px" class="m-1">
+                            <img src="{{asset($imagePath)}}" width="100" class="m-1">
                         @endforeach
                     </div>
+                </div>
+                <div class="form-group">
+                    <strong>Price:</strong>
+                    <span>{{ $product->price }}</span>
+                </div>
+                @if($product->discount)
+                    <div class="form-group">
+                        <strong>Discount:</strong>
+                        <span>{{ $product->discount }}</span>
+                    </div>
+                @endif
+                @if($product->material)
+                    <div class="form-group">
+                        <strong>Material:</strong>
+                        <span>{{ $product->material }}</span>
+                    </div>
+                @endif
+                @if($product->composition)
+                    <div class="form-group">
+                        <strong>Composition:</strong>
+                        <span>{{ $product->composition }}</span>
+                    </div>
+                @endif
+                @if($product->care_instructions)
+                    <div class="form-group">
+                        <strong>Care Instructions:</strong>
+                        <span>{{ $product->care_instructions }}</span>
+                    </div>
+                @endif
+                <div class="form-group">
+                    <strong>Color:</strong>
+                    <span>{{ $product->color }}</span>
+                </div>
+                <div class="form-group">
+                    <strong>Size:</strong>
+                    @foreach($size as $key => $value)
+                        <span>{{ $value }}</span>
+                        @if(!$loop->last)
+                            ,
+                        @endif
+                    @endforeach
+                </div>
+                <div class="form-group">
+                    <strong>Features:</strong>
+                    <span>{{ $product->features }}</span>
+                </div>
+                <div class="form-group">
+                    <strong>Description:</strong>
+                    <span>{{ $product->description }}</span>
+                </div>
+                <div class="form-group">
+                    <strong>Category:</strong>
+                    <span>{{ $product->category->name }}</span>
                 </div>
             </div>
         </div>

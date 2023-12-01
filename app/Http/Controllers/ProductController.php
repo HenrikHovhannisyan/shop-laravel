@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Contracts\View\Factory;
@@ -48,11 +49,12 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'about' => 'required',
-            'characteristics' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'pdf' => 'file|mimes:pdf|max:2048',
+            'price' => 'required',
+            'color' => 'required',
+            'size' => 'required|array',
+            'features' => 'required',
+            'description' => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
 
@@ -71,14 +73,8 @@ class ProductController extends Controller
             $input['images'] = json_encode($imagePaths);
         }
 
-        if ($pdfFile = $request->file('pdf')) {
-            $destinationPath = 'pdf/products';
-            $pdfFileName = date('YmdHis') . "." . $pdfFile->getClientOriginalExtension();
-            $pdfFile->move($destinationPath, $pdfFileName);
-            $input['pdf'] = $destinationPath . '/' . $pdfFileName;
-        }
-
         $input['category_id'] = $request->category_id;
+        $input['size'] = json_encode($request->size);
 
         Product::create($input);
 
@@ -95,7 +91,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('admin.products.show', compact('product'));
+        $size = json_decode($product->size);
+        return view('admin.products.show', compact('product', 'size'));
     }
 
     /**
@@ -122,30 +119,16 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'about' => 'required',
-            'characteristics' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'pdf' => 'file|mimes:pdf|max:2048',
+            'price' => 'required',
+            'color' => 'required',
+            'size' => 'required',
+            'features' => 'required',
+            'description' => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
 
         $input = $request->all();
-
-        if ($pdfFile = $request->file('pdf')) {
-            $destinationPath = 'pdf/products';
-
-            if ($product->pdf) {
-                $oldPdfPath = public_path($product->pdf);
-                if (file_exists($oldPdfPath)) {
-                    unlink($oldPdfPath);
-                }
-            }
-
-            $pdfFileName = date('YmdHis') . "." . $pdfFile->getClientOriginalExtension();
-            $pdfFile->move($destinationPath, $pdfFileName);
-            $input['pdf'] = $destinationPath . '/' . $pdfFileName;
-        }
 
         if ($request->hasFile('images')) {
             $imagePaths = [];
@@ -193,13 +176,6 @@ class ProductController extends Controller
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath);
                 }
-            }
-        }
-
-        if ($product->pdf) {
-            $pdfPath = public_path($product->pdf);
-            if (file_exists($pdfPath)) {
-                unlink($pdfPath);
             }
         }
 

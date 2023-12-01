@@ -17,10 +17,12 @@ class Product extends Model
         'discount',
         'material',
         'composition',
-        'collar',
-        'cuff',
         'care_instructions',
+        'color',
+        'size',
         'features',
+        'description',
+        'category_id',
     ];
 
     protected $casts = [
