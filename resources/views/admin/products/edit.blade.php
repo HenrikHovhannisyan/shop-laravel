@@ -22,69 +22,141 @@
                 </ul>
             </div>
         @endif
-        <div class="col-12 col-md-6">
+        <div class="col-12">
             <form action="{{ route('products.update',$product->id) }}" method="POST" enctype="multipart/form-data"
                   class="mt-3">
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Name:</strong>
-                            <input type="text" name="name" value="{{ $product->name }}" class="form-control"
-                                   placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <strong>Description:</strong>
-                            <textarea name="description" class="form-control" placeholder="Description">
-                                {{ $product->description }}
-                            </textarea>
-                        </div>
-                        <div class="form-group">
-                            <strong>About:</strong>
-                            <input type="text" name="about" value="{{ $product->about }}" class="form-control" placeholder="About">
-                        </div>
-                        <div class="form-group">
-                            <strong>Characteristics:</strong>
-                            <textarea name="characteristics" class="form-control" placeholder="Characteristics">
-                                 {{ $product->characteristics }}
-                            </textarea>
-                        </div>
+                    <div class="form-group col-lg-3">
+                        <strong>
+                            Name:
+                            <span class="text-danger">*</span>
+                        </strong>
+                        <input type="text" name="name" value="{{ $product->name }}" class="form-control"
+                               placeholder="Name" required>
                     </div>
+                    <div class="form-group col-lg-3">
+                        <strong>Price:
+                            <span class="text-danger">*</span>
+                        </strong>
+                        <input type="number" name="price" value="{{ $product->price }}" class="form-control"
+                               placeholder="Price" required>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Category:</strong>
-                            <select name="category_id" class="form-control">
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" @if($product->category_id == $category->id) selected @endif>
-                                        {{ $category->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <strong>Image:</strong>
-                            <input type="file" name="images[]" class="form-control" placeholder="image" multiple>
-                            @foreach(json_decode($product->images) as $imagePath)
-                                <img src="{{asset($imagePath)}}" width="300px" class="m-1">
+                    <div class="form-group col-lg-3">
+                        <strong>Discount:</strong>
+                        <input type="number" name="discount" value="{{ $product->discount }}" class="form-control"
+                               placeholder="Discount">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <strong>Material:</strong>
+                        <input type="text" name="material" value="{{ $product->material }}" class="form-control"
+                               placeholder="Material">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <strong>Composition:</strong>
+                        <input type="text" name="composition" value="{{ $product->composition }}" class="form-control"
+                               placeholder="Composition">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <strong>Care Instructions:</strong>
+                        <input type="text" name="care_instructions" value="{{ $product->care_instructions }}"
+                               class="form-control" placeholder="Composition">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <strong>Color:
+                            <span class="text-danger">*</span>
+                        </strong>
+                        <input type="text" name="color" value="{{ $product->color }}" class="form-control"
+                               placeholder="Color" required>
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <strong>Category:
+                            <span class="text-danger">*</span>
+                        </strong>
+                        <select name="category_id" class="form-control" required>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}"
+                                        @if($product->category_id == $category->id) selected @endif>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <strong>Features:
+                            <span class="text-danger">*</span>
+                        </strong>
+                        <textarea name="features" id="features" class="form-control" placeholder="Features">
+                            {{ $product->features }}
+                        </textarea>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <strong>Description:
+                            <span class="text-danger">*</span>
+                        </strong>
+                        <textarea name="description" id="description" class="form-control" placeholder="Description">
+                            {{ $product->description }}
+                        </textarea>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <strong>Image:</strong>
+                        <input type="file" name="images[]" class="form-control" placeholder="image" multiple>
+                        @foreach(json_decode($product->images) as $imagePath)
+                            <img src="{{asset($imagePath)}}" width="100px" class="m-1">
+                        @endforeach
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <strong>Size:
+                            <span class="text-danger">*</span>
+                        </strong>
+                        <div class="d-flex">
+                            @foreach($availableSizes as $size)
+                                <div class="form-check me-3">
+                                    <input class="form-check-input" type="checkbox" name="size[]" value="{{ $size }}" id="{{ $size }}"
+                                        {{ in_array($size, $selectedSizes) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="{{ $size }}">{{ $size }}</label>
+                                </div>
                             @endforeach
                         </div>
-                        <div class="form-group">
-                            <strong>PDF:</strong>
-                            @if ($product->pdf)
-                                <a href="{{ asset($product->pdf) }}" class="text-dark" target="_blank">View Current PDF</a>
-                                <br>
-                            @endif
-                            <input type="file" name="pdf" class="form-control" accept=".pdf">
-                        </div>
-
                     </div>
-                    <div class="col-12 mt-3 text-center">
+                    <div class="col-12 text-center mt-3">
                         <button type="submit" class="btn btn-primary">Edit</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <script>
+        ClassicEditor.create(document.querySelector("#features"), {
+            toolbar: {
+                items: [
+                    'undo', 'redo',
+                    '|', 'heading',
+                    '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+                    '|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'code',
+                    '|', 'link', 'codeBlock',
+                    '|', 'bulletedList', 'numberedList', 'todoList',
+                ],
+                shouldNotGroupWhenFull: false
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+        ClassicEditor.create(document.querySelector("#description"), {
+            toolbar: {
+                items: [
+                    'undo', 'redo',
+                    '|', 'heading',
+                    '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+                    '|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'code',
+                    '|', 'link', 'codeBlock',
+                    '|', 'bulletedList', 'numberedList', 'todoList',
+                ],
+                shouldNotGroupWhenFull: false
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    </script>
 @endsection

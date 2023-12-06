@@ -73,25 +73,27 @@
                         <strong>Size:
                             <span class="text-danger">*</span>
                         </strong>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="size[]" value="XS" id="XS">
-                            <label class="form-check-label" for="XS">XS</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="size[]" value="S" id="S">
-                            <label class="form-check-label" for="S">S</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="size[]" value="M" id="M">
-                            <label class="form-check-label" for="M">M</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="size[]" value="L" id="L">
-                            <label class="form-check-label" for="L">L</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="size[]" value="XL" id="XL">
-                            <label class="form-check-label" for="XL">XL</label>
+                        <div class="d-flex">
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" name="size[]" value="XS" id="XS">
+                                <label class="form-check-label" for="XS">XS</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" name="size[]" value="S" id="S">
+                                <label class="form-check-label" for="S">S</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" name="size[]" value="M" id="M">
+                                <label class="form-check-label" for="M">M</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" name="size[]" value="L" id="L">
+                                <label class="form-check-label" for="L">L</label>
+                            </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="checkbox" name="size[]" value="XL" id="XL">
+                                <label class="form-check-label" for="XL">XL</label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group col-lg-6">
@@ -109,13 +111,13 @@
                         <strong>Features:
                             <span class="text-danger">*</span>
                         </strong>
-                        <textarea name="features" class="form-control" placeholder="Features" required></textarea>
+                        <textarea name="features" id="features" class="form-control" placeholder="Features"></textarea>
                     </div>
                     <div class="form-group col-lg-6">
                         <strong>Description:
                             <span class="text-danger">*</span>
                         </strong>
-                        <textarea name="description" class="form-control" placeholder="Description" required></textarea>
+                        <textarea name="description" id="description" class="form-control" placeholder="Description"></textarea>
                     </div>
                     <div class="col-12 text-center mt-3">
                         <button type="submit" class="btn btn-success">Add</button>
@@ -126,4 +128,36 @@
         </div>
 
     </div>
+    <script>
+        ClassicEditor.create(document.querySelector("#features"), {
+            toolbar: {
+                items: [
+                    'undo', 'redo',
+                    '|', 'heading',
+                    '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+                    '|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'code',
+                    '|', 'link', 'codeBlock',
+                    '|', 'bulletedList', 'numberedList', 'todoList',
+                ],
+                shouldNotGroupWhenFull: false
+            }
+        } ).catch((error) => {
+            console.error(error);
+        });
+        ClassicEditor.create(document.querySelector("#description"), {
+            toolbar: {
+                items: [
+                    'undo', 'redo',
+                    '|', 'heading',
+                    '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+                    '|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'code',
+                    '|', 'link', 'codeBlock',
+                    '|', 'bulletedList', 'numberedList', 'todoList',
+                ],
+                shouldNotGroupWhenFull: false
+            }
+        } ).catch((error) => {
+            console.error(error);
+        });
+    </script>
 @endsection

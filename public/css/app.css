@@ -39,6 +39,14 @@ footer a {
     font-size: 26px;
 }
 
+.ck-editor__editable {
+    min-height: 200px;
+}
+
+.ck-powered-by {
+    display: none;
+}
+
 /*=============== BREAKPOINTS ===============*/
 @media screen and (max-width: 1200px) {
 }

@@ -104,7 +104,10 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        return view('admin.products.edit', compact('product', 'categories'));
+        $selectedSizes = json_decode($product->size);
+        $availableSizes = ['XS', 'S', 'M', 'L', 'XL'];
+
+        return view('admin.products.edit', compact('product', 'categories', 'selectedSizes', 'availableSizes'));
     }
 
     /**

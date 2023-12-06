@@ -69,11 +69,11 @@
                 </div>
                 <div class="form-group">
                     <strong>Features:</strong>
-                    <span>{{ $product->features }}</span>
+                    <span>{!! html_entity_decode($product->features) !!}</span>
                 </div>
                 <div class="form-group">
                     <strong>Description:</strong>
-                    <span>{{ $product->description }}</span>
+                    <span>{!! html_entity_decode($product->description) !!}</span>
                 </div>
                 <div class="form-group">
                     <strong>Category:</strong>
