@@ -41,15 +41,23 @@
                         </strong>
                         <input type="file" name="images[]" class="form-control" multiple required>
                     </div>
-                    <div class="form-group col-lg-3">
-                        <strong>Price:
-                            <span class="text-danger">*</span>
-                        </strong>
-                        <input type="number" name="price" class="form-control" placeholder="Price" required>
-                    </div>
-                    <div class="form-group col-lg-3">
-                        <strong>Discount:</strong>
-                        <input type="number" name="discount" class="form-control" placeholder="Discount">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <strong>Price:
+                                    <span class="text-danger">*</span>
+                                </strong>
+                                <input type="number" name="price" id="price" class="form-control" placeholder="Price" required>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <strong>Discount percent:</strong>
+                                <input type="number" id="discount_percent" class="form-control" placeholder="Discount percent">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <strong>Discount:</strong>
+                                <input type="number" name="discount" id="discount" class="form-control" placeholder="Discount" disabled>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-lg-3">
                         <strong>Material:</strong>
@@ -117,7 +125,8 @@
                         <strong>Description:
                             <span class="text-danger">*</span>
                         </strong>
-                        <textarea name="description" id="description" class="form-control" placeholder="Description"></textarea>
+                        <textarea name="description" id="description" class="form-control"
+                                  placeholder="Description"></textarea>
                     </div>
                     <div class="col-12 text-center mt-3">
                         <button type="submit" class="btn btn-success">Add</button>
@@ -141,7 +150,7 @@
                 ],
                 shouldNotGroupWhenFull: false
             }
-        } ).catch((error) => {
+        }).catch((error) => {
             console.error(error);
         });
         ClassicEditor.create(document.querySelector("#description"), {
@@ -156,7 +165,7 @@
                 ],
                 shouldNotGroupWhenFull: false
             }
-        } ).catch((error) => {
+        }).catch((error) => {
             console.error(error);
         });
     </script>
