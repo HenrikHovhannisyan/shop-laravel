@@ -50,12 +50,12 @@
                                 <input type="number" name="price" id="price" class="form-control" placeholder="Price" required>
                             </div>
                             <div class="form-group col-lg-4">
-                                <strong>Discount percent:</strong>
-                                <input type="number" id="discount_percent" class="form-control" placeholder="Discount percent">
+                                <strong>Discount Percent:</strong>
+                                <input type="number" id="discount_percent" class="form-control" placeholder="Discount Percent">
                             </div>
                             <div class="form-group col-lg-4">
-                                <strong>Discount:</strong>
-                                <input type="number" name="discount" id="discount" class="form-control" placeholder="Discount" disabled>
+                                <strong>Discount Price:</strong>
+                                <input type="number" name="discount" id="discount" class="form-control" placeholder="Discount Price" disabled>
                             </div>
                         </div>
                     </div>
