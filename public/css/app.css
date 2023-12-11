@@ -30,7 +30,7 @@ footer a {
 }
 
 #sidebar {
-    height: calc(100vh - 59px);
+    height: calc(100vh - 88px);
     min-width: 250px;
     max-width: 250px;
     background: #1a202c;
@@ -80,7 +80,7 @@ a[data-toggle="collapse"] {
 #content {
     width: 100%;
     padding: 20px;
-    min-height: calc(100vh - 59px);
+    min-height: calc(100vh - 88px);
     transition: all 0.3s;
 }
 
