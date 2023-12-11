@@ -24,3 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
         discount.value = price.value - (price.value * discount_percent.value) / 100;
     });
 });
+
+$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+});
