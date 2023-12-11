@@ -11,7 +11,7 @@
                             <!-- Card stats -->
                             <div class="row g-6 mb-6">
                                 <div class="col-xl-4 col-sm-6 col-12">
-                                    <div class="card shadow border-0">
+                                    <div class="card shadow border">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-sm-6 col-12">
-                                    <div class="card shadow border-0">
+                                    <div class="card shadow border">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-sm-6 col-12">
-                                    <div class="card shadow border-0">
+                                    <div class="card shadow border">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
