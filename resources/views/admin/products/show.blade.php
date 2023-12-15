@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2> Show Category</h2>
+                    <h2> Show Product</h2>
                 </div>
                 <div class="pull-right">
                     <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
@@ -86,10 +86,12 @@
                 <div class="row mt-2">
                     <div class="col-12 col-md-6 border rounded">
                         <strong>Features:</strong>
+                        <hr>
                         <span>{!! html_entity_decode($product->features) !!}</span>
                     </div>
                     <div class="col-12 col-md-6 border rounded">
                         <strong>Description:</strong>
+                        <hr>
                         <span>{!! html_entity_decode($product->description) !!}</span>
                     </div>
                     <div class="col-12">
