@@ -106,8 +106,9 @@ class ProductController extends Controller
         $categories = Category::all();
         $selectedSizes = json_decode($product->size);
         $availableSizes = ['XS', 'S', 'M', 'L', 'XL'];
+        $discount = $product->price - ($product->price * $product->discount) / 100;
 
-        return view('admin.products.edit', compact('product', 'categories', 'selectedSizes', 'availableSizes'));
+        return view('admin.products.edit', compact('product', 'categories', 'selectedSizes', 'availableSizes', 'discount'));
     }
 
     /**

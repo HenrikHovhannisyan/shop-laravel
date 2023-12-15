@@ -33,7 +33,7 @@
                 @if($product->discount)
                     <div class="form-group">
                         <strong>Discount:</strong>
-                        <span>{{ $product->discount }}</span>
+                        <span>{{ $product->discount }}%</span>
                     </div>
                 @endif
                 @if($product->material)

@@ -51,11 +51,11 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <strong>Discount Percent:</strong>
-                                <input type="number" id="discount_percent" class="form-control" placeholder="Discount Percent">
+                                <input type="number" name="discount" id="discount_percent" class="form-control" placeholder="Discount Percent">
                             </div>
                             <div class="form-group col-lg-4">
                                 <strong>Discount Price:</strong>
-                                <input type="number" name="discount" id="discount" class="form-control" placeholder="Discount Price" disabled>
+                                <input type="number" id="discount" class="form-control" placeholder="Discount Price" disabled>
                             </div>
                         </div>
                     </div>
@@ -133,7 +133,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
 
     </div>

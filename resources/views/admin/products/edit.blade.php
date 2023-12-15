@@ -37,16 +37,29 @@
                                placeholder="Name" required>
                     </div>
                     <div class="form-group col-lg-3">
-                        <strong>Price:
-                            <span class="text-danger">*</span>
-                        </strong>
-                        <input type="number" name="price" value="{{ $product->price }}" class="form-control"
-                               placeholder="Price" required>
+                        <strong>Image:</strong>
+                        @foreach(json_decode($product->images) as $imagePath)
+                            <img src="{{asset($imagePath)}}" width="100px" class="m-1">
+                        @endforeach
+                        <input type="file" name="images[]" class="form-control" placeholder="image" multiple>
                     </div>
-                    <div class="form-group col-lg-3">
-                        <strong>Discount:</strong>
-                        <input type="number" name="discount" value="{{ $product->discount }}" class="form-control"
-                               placeholder="Discount">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <strong>Price:
+                                    <span class="text-danger">*</span>
+                                </strong>
+                                <input type="number" name="price" value="{{ $product->price }}" id="price" class="form-control" placeholder="Price" required>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <strong>Discount Percent:</strong>
+                                <input type="number" name="discount" value="{{ $product->discount }}" id="discount_percent" class="form-control" placeholder="Discount Percent">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <strong>Discount Price:</strong>
+                                <input type="number" id="discount" value="{{$discount}}" class="form-control" placeholder="Discount Price" disabled>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-lg-3">
                         <strong>Material:</strong>
@@ -70,7 +83,21 @@
                         <input type="text" name="color" value="{{ $product->color }}" class="form-control"
                                placeholder="Color" required>
                     </div>
-                    <div class="form-group col-lg-3">
+                    <div class="form-group col-lg-6">
+                        <strong>Size:
+                            <span class="text-danger">*</span>
+                        </strong>
+                        <div class="d-flex">
+                            @foreach($availableSizes as $size)
+                                <div class="form-check me-3">
+                                    <input class="form-check-input" type="checkbox" name="size[]" value="{{ $size }}" id="{{ $size }}"
+                                        {{ in_array($size, $selectedSizes) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="{{ $size }}">{{ $size }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
                         <strong>Category:
                             <span class="text-danger">*</span>
                         </strong>
@@ -98,27 +125,6 @@
                         <textarea name="description" id="description" class="form-control" placeholder="Description">
                             {{ $product->description }}
                         </textarea>
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <strong>Image:</strong>
-                        <input type="file" name="images[]" class="form-control" placeholder="image" multiple>
-                        @foreach(json_decode($product->images) as $imagePath)
-                            <img src="{{asset($imagePath)}}" width="100px" class="m-1">
-                        @endforeach
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <strong>Size:
-                            <span class="text-danger">*</span>
-                        </strong>
-                        <div class="d-flex">
-                            @foreach($availableSizes as $size)
-                                <div class="form-check me-3">
-                                    <input class="form-check-input" type="checkbox" name="size[]" value="{{ $size }}" id="{{ $size }}"
-                                        {{ in_array($size, $selectedSizes) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="{{ $size }}">{{ $size }}</label>
-                                </div>
-                            @endforeach
-                        </div>
                     </div>
                     <div class="col-12 text-center mt-3">
                         <button type="submit" class="btn btn-primary">Edit</button>

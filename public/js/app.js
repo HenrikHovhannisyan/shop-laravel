@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let discount = document.querySelector('#discount');
 
     discount_percent.addEventListener('input', () => {
-        console.log(discount_percent.value);
         discount.value = price.value - (price.value * discount_percent.value) / 100;
     });
 });
