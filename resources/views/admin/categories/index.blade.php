@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <table class="table table-bordered mt-3">
+        <table class="table table-bordered mt-3 table-responsive">
             <tr>
                 <th>No</th>
                 <th>Image</th>

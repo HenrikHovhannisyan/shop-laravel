@@ -13,73 +13,94 @@
             </div>
         </div>
         <div class="row mt-3">
+            <table class="table table-bordered table-responsive">
+                <thead>
+                <tr>
+                    <th scope="col">
+                        <strong>Name</strong>
+                    </th>
+                    <th scope="col">
+                        <strong>Price</strong>
+                    </th>
+                    @if($product->discount)
+                        <th scope="col">
+                            <strong>Discount</strong>
+                        </th>
+                    @endif
+                    @if($product->material)
+                        <th scope="col">
+                            <strong>Material</strong>
+                        </th>
+                    @endif
+                    @if($product->composition)
+                        <th scope="col">
+                            <strong>Composition</strong>
+                        </th>
+                    @endif
+                    @if($product->care_instructions)
+                        <th scope="col">
+                            <strong>Care Instructions</strong>
+                        </th>
+                    @endif
+                    <th scope="col">
+                        <strong>Color</strong>
+                    </th>
+                    <th scope="col">
+                        <strong>Size</strong>
+                    </th>
+                    <th scope="col">
+                        <strong>Category</strong>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>{{ $product->name }}</th>
+                    <td>{{ $product->price }}</td>
+                    @if($product->discount)
+                        <td>{{ $product->discount }}%</td>
+                    @endif
+                    @if($product->material)
+                        <td>{{ $product->material }}</td>
+                    @endif
+                    @if($product->composition)
+                        <td>{{ $product->composition }}</td>
+                    @endif
+                    @if($product->care_instructions)
+                        <td>{{ $product->care_instructions }}</td>
+                    @endif
+                    <td>{{ $product->color }}</td>
+                    <td>
+                        @foreach($size as $key => $value)
+                            <span>{{ $value }}</span>
+                            @if(!$loop->last)
+                                ,
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>{{ $product->category->name }}</td>
+                </tr>
+                </tbody>
+            </table>
             <div class="col-12">
-                <div class="form-group">
-                    <strong>Name:</strong>
-                    <span>{{ $product->name }}</span>
-                </div>
-                <div class="form-group">
-                    <strong>Image:</strong>
-                    <div class="col-12 col-md-6">
+                <div class="row mt-2">
+                    <div class="col-12 col-md-6 border rounded">
+                        <strong>Features:</strong>
+                        <span>{!! html_entity_decode($product->features) !!}</span>
+                    </div>
+                    <div class="col-12 col-md-6 border rounded">
+                        <strong>Description:</strong>
+                        <span>{!! html_entity_decode($product->description) !!}</span>
+                    </div>
+                    <div class="col-12">
+                        <strong>Image:</strong><br>
                         @foreach(json_decode($product->images) as $imagePath)
-                            <img src="{{asset($imagePath)}}" width="100" class="m-1">
+                            <img src="{{asset($imagePath)}}" width="200" class="m-1 img-fluid">
                         @endforeach
                     </div>
                 </div>
-                <div class="form-group">
-                    <strong>Price:</strong>
-                    <span>{{ $product->price }}</span>
-                </div>
-                @if($product->discount)
-                    <div class="form-group">
-                        <strong>Discount:</strong>
-                        <span>{{ $product->discount }}%</span>
-                    </div>
-                @endif
-                @if($product->material)
-                    <div class="form-group">
-                        <strong>Material:</strong>
-                        <span>{{ $product->material }}</span>
-                    </div>
-                @endif
-                @if($product->composition)
-                    <div class="form-group">
-                        <strong>Composition:</strong>
-                        <span>{{ $product->composition }}</span>
-                    </div>
-                @endif
-                @if($product->care_instructions)
-                    <div class="form-group">
-                        <strong>Care Instructions:</strong>
-                        <span>{{ $product->care_instructions }}</span>
-                    </div>
-                @endif
-                <div class="form-group">
-                    <strong>Color:</strong>
-                    <span>{{ $product->color }}</span>
-                </div>
-                <div class="form-group">
-                    <strong>Size:</strong>
-                    @foreach($size as $key => $value)
-                        <span>{{ $value }}</span>
-                        @if(!$loop->last)
-                            ,
-                        @endif
-                    @endforeach
-                </div>
-                <div class="form-group">
-                    <strong>Features:</strong>
-                    <span>{!! html_entity_decode($product->features) !!}</span>
-                </div>
-                <div class="form-group">
-                    <strong>Description:</strong>
-                    <span>{!! html_entity_decode($product->description) !!}</span>
-                </div>
-                <div class="form-group">
-                    <strong>Category:</strong>
-                    <span>{{ $product->category->name }}</span>
-                </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
