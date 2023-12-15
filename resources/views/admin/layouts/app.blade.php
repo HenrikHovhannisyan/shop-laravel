@@ -57,13 +57,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link nav_link" href="{{route('admin.home')}}">Dashboard</a>
+                        <a class="nav-link nav_link {{isActiveRoute('admin.home')}}" href="{{route('admin.home')}}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav_link" href="{{route('categories.index')}}">Categories</a>
+                        <a class="nav-link nav_link {{isActiveRoute('categories.index')}}" href="{{route('categories.index')}}">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav_link" href="{{route('products.index')}}">Products</a>
+                        <a class="nav-link nav_link {{isActiveRoute('products.index')}}" href="{{route('products.index')}}">Products</a>
                     </li>
                 </ul>
 
