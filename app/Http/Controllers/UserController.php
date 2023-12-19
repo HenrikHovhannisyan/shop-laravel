@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+use App\Models\User;
+use Dflydev\DotAccessData\Data;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
+
+
+class UserController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Factory|View
+     */
+    public function index()
+    {
+        $users = User::latest()->paginate(5);
+
+        return view('admin.users.index', compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return void
+     */
+    public function create()
+    {
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param StoreUserRequest $request
+     * @return void
+     */
+    public function store(StoreUserRequest $request)
+    {
+
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param User $User
+     * @return void
+     */
+    public function show(User $User)
+    {
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param User $User
+     * @return void
+     */
+    public function edit(User $User)
+    {
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param User $User
+     * @return void
+     */
+
+    public function update(Request $request, User $User)
+    {
+
+    }
+
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param User $User
+     * @return RedirectResponse
+     */
+    public function destroy(User $User)
+    {
+        $User->delete();
+
+        return redirect()->route('users.index')
+            ->with('success', 'User deleted successfully');
+    }
+
+}

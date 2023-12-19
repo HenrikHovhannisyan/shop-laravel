@@ -6,6 +6,12 @@
                 Dashboard
             </a>
         </li>
+        <li class="nav-item {{isActiveRoute('users.index')}}">
+            <a class="nav-link nav_link" href="{{route('users.index')}}">
+                <i class="me-1 fa-solid fa-users"></i>
+                Users
+            </a>
+        </li>
         <li class="nav-item {{isActiveRoute('categories.index')}}">
             <a class="nav-link nav_link" href="{{route('categories.index')}}">
                 <i class="me-1 fa-solid fa-list"></i>

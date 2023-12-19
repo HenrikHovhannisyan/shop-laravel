@@ -25,7 +25,7 @@
                                                 </div>
                                             </div>
                                             <div class="mt-2 mb-0 text-sm">
-                                                <a href="{{route('categories.index')}}" class="badge badge-pill bg-soft-success text-success">
+                                                <a href="{{route('users.index')}}" class="badge badge-pill bg-soft-success text-success">
                                                     Users Page
                                                 </a>
                                             </div>

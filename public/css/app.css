@@ -75,7 +75,10 @@ a[data-toggle="collapse"] {
     color: #dc3545!important;
 }
 
-
+.page-item.active .page-link {
+    color: #4a5568;
+    border-color: #a0aec0;
+}
 
 /* ---------------------------------------------------
     CONTENT STYLE

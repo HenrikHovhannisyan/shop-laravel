@@ -60,6 +60,9 @@
                         <a class="nav-link nav_link {{isActiveRoute('admin.home')}}" href="{{route('admin.home')}}">Dashboard</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link nav_link {{isActiveRoute('users.index')}}" href="{{route('users.index')}}">Users</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link nav_link {{isActiveRoute('categories.index')}}" href="{{route('categories.index')}}">Categories</a>
                     </li>
                     <li class="nav-item">
