@@ -33,7 +33,9 @@
                         {{ $user->email }}
                     </td>
                     <td>
-                        @if($user->is_admin === 1)
+                        @if($user->is_admin === 2)
+                            <span class="text-danger">Super Admin</span>
+                        @elseIf($user->is_admin === 1)
                             <span class="text-success">Admin</span>
                         @else
                             <span class="text-warning">User</span>
