@@ -32,13 +32,30 @@
                     <td>
                         {{ $user->email }}
                     </td>
-                    <td>
+                    <td class="d-flex justify-content-between align-items-center">
                         @if($user->is_admin === 2)
-                            <span class="text-danger">Super Admin</span>
+                            <span class="text-danger "><b>Super Admin</b></span>
                         @elseIf($user->is_admin === 1)
-                            <span class="text-success">Admin</span>
+                            <span class="text-success"><b>Admin</b></span>
                         @else
-                            <span class="text-warning">User</span>
+                            <span class="text-warning"><b>User</b></span>
+                        @endif
+                        @if($user->is_admin !== 2)
+                                <form method="POST" action="{{ route('users.updateRole', ['user' => $user]) }}">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <div class="d-flex">
+                                        <select class="form-select role_select" name="role">
+                                            <option value="1" @if($user->is_admin == 1) selected @endif>Admin</option>
+                                            <option value="0" @if($user->is_admin == 0) selected @endif>User</option>
+                                        </select>
+
+                                        <button class="btn btn-success" type="submit">
+                                            <i class="fa-solid fa-check"></i>
+                                        </button>
+                                    </div>
+                                </form>
                         @endif
                     </td>
                     <td>

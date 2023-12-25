@@ -101,4 +101,18 @@ class UserController extends Controller
             ->with('success', 'User deleted successfully');
     }
 
+    public function updateRole(Request $request, User $user)
+    {
+        $request->validate([
+            'role' => 'required|in:1,0', // Assuming the role is passed as '1' (admin) or '0' (user)
+        ]);
+
+        // Update the is_admin value based on the selected role
+        $user->is_admin = $request->input('role');
+        $user->save();
+
+        return redirect()->route('users.index')
+            ->with('success', 'User role updated successfully');
+    }
+
 }

@@ -13,6 +13,7 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::resource('users', UserController::class);
+    Route::put('/users/{user}/update-role', [UserController::class, 'updateRole'])->name('users.updateRole');
 });
 
 Auth::routes();
