@@ -42,11 +42,15 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreUserRequest $request
-     * @return void
+     * @return array
      */
     public function store(StoreUserRequest $request)
     {
-
+        return [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $this->route('user'),
+            'password' => 'nullable|min:6|confirmed',
+        ];
     }
 
 
@@ -64,27 +68,39 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param User $User
-     * @return void
+     * @param User $user
+     * @return Factory|View
      */
-    public function edit(User $User)
+    public function edit(User $user)
     {
-
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param User $User
-     * @return void
+     * @param User $user
+     * @return RedirectResponse
      */
 
-    public function update(Request $request, User $User)
+    public function update(Request $request, User $user)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|min:6|confirmed',
+            'password_confirmation' => 'nullable',
+        ]);
 
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => empty($request->password) ? $user->password : bcrypt($request->password),
+        ]);
+
+        return redirect()->back()->with('success', 'User updated successfully');
     }
-
 
 
     /**
