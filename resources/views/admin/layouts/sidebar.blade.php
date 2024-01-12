@@ -24,6 +24,12 @@
                 Products
             </a>
         </li>
+        <li class="nav-item {{isActiveRoute('contacts.index')}}">
+            <a class="nav-link nav_link" href="{{route('contacts.index')}}">
+                <i class="me-1 fa-solid fa-address-book"></i>
+                Contact Us
+            </a>
+        </li>
         <li class="nav-item {{isActiveRoute('users.edit')}}">
             <a class="nav-link nav_link" href="{{route('users.edit',auth()->user()->id)}}">
                 <i class="me-1 fa-solid fa-gear"></i>
