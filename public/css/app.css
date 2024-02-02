@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import url("https://unpkg.com/@webpixels/css@1.1.5/dist/index.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
 body {
     max-width: 1924px;
     margin: auto;
@@ -62,7 +63,7 @@ footer a {
     background: #fff;
 }
 
-#sidebar .active{
+#sidebar .active {
     color: #fff;
     background: #000000;
 }
@@ -72,7 +73,7 @@ a[data-toggle="collapse"] {
 }
 
 .nav_link.active {
-    color: #dc3545!important;
+    color: #dc3545 !important;
 }
 
 .page-item.active .page-link {
@@ -99,30 +100,32 @@ a[data-toggle="collapse"] {
     #sidebar {
         margin-left: -250px;
     }
+
     #sidebar.active {
         margin-left: 0;
     }
+
     #sidebarCollapse span {
         display: none;
     }
 }
 
-#back-to-top-button {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #9EBDB3;
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    z-index: 9;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    font-size: 26px;
-}
+/*#back-to-top-button {*/
+/*    display: none;*/
+/*    position: fixed;*/
+/*    bottom: 20px;*/
+/*    right: 20px;*/
+/*    padding: 10px 20px;*/
+/*    background-color: #9EBDB3;*/
+/*    color: #000000;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    z-index: 9;*/
+/*    width: 58px;*/
+/*    height: 58px;*/
+/*    border-radius: 50%;*/
+/*    font-size: 26px;*/
+/*}*/
 
 .ck-editor__editable {
     min-height: 200px;
@@ -136,18 +139,84 @@ a[data-toggle="collapse"] {
     width: max-content;
 }
 
+#banner {
+    background-image: url("../img/banner.png");
+    height: 820px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#banner > button {
+    background-color: #FFFFFF;
+    color: #1B1B1B;
+    text-align: center;
+    padding: 12px 20px 10px 20px;
+    font-size: 13px;
+    line-height: 18px;
+    bottom: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+}
+
+#banner > button:hover {
+    opacity: .7;
+}
+
+#gift > h2 {
+    color: #1B1B1B;
+    font-weight: 400;
+    margin-bottom: 20px;
+    font-size: 40px;
+    line-height: 44px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#gift > p {
+    font-size: 23px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    color: #1B1B1B;
+}
+
+.gift_container {
+    width: max-content;
+    max-width: 100%;
+    margin: auto;
+}
+
+#shop,
+#more {
+    margin-top: 80px;
+    text-align: center;
+    text-decoration: none;
+}
+
 /*=============== BREAKPOINTS ===============*/
 @media screen and (max-width: 1200px) {
 }
 
 @media screen and (max-width: 992px) {
+    #banner {
+        height: 450px;
+    }
 }
 
 @media screen and (max-width: 768px) {
-
 }
 
 @media screen and (max-width: 576px) {
+    #banner {
+        height: 250px;
+    }
 }
 
 @media screen and (max-width: 350px) {
