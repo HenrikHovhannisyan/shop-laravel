@@ -110,22 +110,26 @@ a[data-toggle="collapse"] {
     }
 }
 
-/*#back-to-top-button {*/
-/*    display: none;*/
-/*    position: fixed;*/
-/*    bottom: 20px;*/
-/*    right: 20px;*/
-/*    padding: 10px 20px;*/
-/*    background-color: #9EBDB3;*/
-/*    color: #000000;*/
-/*    border: none;*/
-/*    cursor: pointer;*/
-/*    z-index: 9;*/
-/*    width: 58px;*/
-/*    height: 58px;*/
-/*    border-radius: 50%;*/
-/*    font-size: 26px;*/
-/*}*/
+#back-to-top-button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #9EBDB3;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    z-index: 9;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    font-size: 26px;
+}
+
+#back-to-top-button {
+    opacity: 0;
+}
 
 .ck-editor__editable {
     min-height: 200px;
@@ -198,6 +202,13 @@ a[data-toggle="collapse"] {
     margin-top: 80px;
     text-align: center;
     text-decoration: none;
+}
+
+.contact_us {
+    min-height: calc(100vh - 214px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*=============== BREAKPOINTS ===============*/

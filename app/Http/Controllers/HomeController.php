@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Info;
 use App\Models\Partner;
 use App\Models\Product;
@@ -25,6 +26,12 @@ class HomeController extends Controller
         $products = Product::inRandomOrder()->take(3)->get();
         $categories = Category::all()->reverse()->take(4);
         return view('home', compact('products', 'categories'));
+    }
+
+    public function contact()
+    {
+        $contact = Contact::first();
+        return view('contact', compact('contact'));
     }
 
     /**
